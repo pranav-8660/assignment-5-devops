@@ -7,3 +7,20 @@
 - Secret: For injecting the encrypted environment variable, API_KEY
 - Deployment: For setting up the state of the application, adding the docker image of the application and including the secret and configmap key references
 - Service : For exposing the application using a network of type NodePort.
+
+### Run the application using hello-k8s.yaml:
+```
+kubectl apply -f hello-k8s.yaml
+```
+
+### Accessing the application:
+- Accessing the applicatin using the port assigned to NodePort :
+```
+kubectl get svc hello-service
+``` 
+Use the port number in the service, ex:30080: Access using: http://localhost:30080
+- Accessing the application by port-forwarding :
+```
+kubectl port-forward svc/hello-service 8080:80
+```
+Access using: http://localhost:8080
